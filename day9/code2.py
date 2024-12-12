@@ -3,8 +3,6 @@ f =open('input.txt', 'r')
 
 total = 0
 line = list(map(lambda x: [int(x),int(x)], f.read().strip()))
-left = 0
-inc = True
 right = len(line)-1
 if right %2 ==1:
 	right = right-1
