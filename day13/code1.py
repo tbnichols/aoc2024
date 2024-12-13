@@ -23,7 +23,8 @@ while True:
         input()
         continue
     # print(f"{bpresses}, {round(bpresses)}, {apresses}, {round(apresses)}")
-    if round(bpresses)*x2+round(apresses)*x1 == xp and round(bpresses)*y2+round(apresses)*y1 == yp:
+    # if round(bpresses)*x2+round(apresses)*x1 == xp and round(bpresses)*y2+round(apresses)*y1 == yp:
+    if abs(round(bpresses)-bpresses)<.01 and abs(round(apresses)-apresses)<.01:
         # if apresses > 100 or bpresses>100:
             # print(f"confused! {apresses}, {bpresses}")
         total+=3*round(apresses) + round(bpresses)
