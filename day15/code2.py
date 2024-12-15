@@ -24,16 +24,7 @@ for x in f:
                 grid[(curx*2+1, cury)] = '.'
         cury+=1
     else:
-        # print(x)
         for ins in x.strip():
-            # print(f"fish loc: {loc}")
-            # print(ins)
-            # for j in range(cury):
-                # row = ""
-                # for i in range(curx*2+2):
-                    # row += grid[(i,j)]
-                # print(row)
-            # input()
             temploc = loc
             if ins in ["<", ">"]:
                 while grid[temploc] not in [".", "#"]:
@@ -42,7 +33,6 @@ for x in f:
                     continue
                 else:
                     while temploc != loc:
-                        # print(f"{temploc}, {dirs[ins]}")
                         grid[temploc] = grid[(temploc[0]-dirs[ins][0], temploc[1]-dirs[ins][1])]
                         temploc = (temploc[0]-dirs[ins][0], temploc[1]-dirs[ins][1])
                     grid[loc] = '.'
