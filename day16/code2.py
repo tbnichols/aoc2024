@@ -16,7 +16,7 @@ turns = {(1,0): [(0,1), (0,-1)], (0,1):[(1,0), (-1,0)], (-1,0):[(0,1), (0,-1)], 
 pq = PriorityQueue()
 visited = {}
 inpath = set()
-pq.put((0, loc, (1,0), set([loc])))
+pq.put((0, loc, (1,0), [loc]))
 total = 0
 while pq.not_empty:
     cost, l, dir, path = pq.get()
@@ -33,14 +33,11 @@ while pq.not_empty:
     if grid[(l[0]+dir[0], l[1]+dir[1])] != '#':
         if cost+1>82460:
             continue
-        pcopy = path.copy()
-        pcopy.add(l)
-        pq.put((cost+1, (l[0]+dir[0], l[1]+dir[1], ), dir, pcopy))
+        pq.put((cost+1, (l[0]+dir[0], l[1]+dir[1], ), dir, path[:]+[l]))
     for newdir in turns[dir]:
         if cost +1000 > 82460:
             break
-        pcopy = path.copy()
-        pq.put((cost+1000, l, newdir, pcopy)) 
+        pq.put((cost+1000, l, newdir, path[:])) 
     if total %10000 ==0:
         print(cost)
     total +=1
