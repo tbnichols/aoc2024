@@ -33,11 +33,15 @@ while pq.not_empty:
     if grid[(l[0]+dir[0], l[1]+dir[1])] != '#':
         if cost+1>82460:
             continue
-        pq.put((cost+1, (l[0]+dir[0], l[1]+dir[1], ), dir, path[:]+[l]))
+        if visited.get((l[0]+dir[0], l[1]+dir[1], dir),82461) >= cost+1:
+            pq.put((cost+1, (l[0]+dir[0], l[1]+dir[1], ), dir, path[:]+[l]))
+            visited[(l, dir)] = min(cost+1, visited.get((l[0]+dir[0], l[1]+dir[1], ), 9999999))
     for newdir in turns[dir]:
         if cost +1000 > 82460:
             break
-        pq.put((cost+1000, l, newdir, path[:])) 
+        if visited.get((l, newdir), 82461)>=cost+1000:
+            visited[(l, dir)] = min(cost+1000, visited.get((l,dir), 9999999))
+            pq.put((cost+1000, l, newdir, path[:]))
     if total %10000 ==0:
         print(cost)
     total +=1
